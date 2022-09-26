@@ -1,0 +1,151 @@
+@forward"./base/index";
+@use"./util/index" as variable;
+
+
+
+// how to use @mixin $ include
+@mixin para-style($size,$style,$color){
+    font-size:$size;
+    text-align:$style;
+    font-weight: bold;
+    color:$color;
+}
+
+
+//how to use variable
+
+header{
+    background:variable.$header-bgcolor;
+    padding:variable.$header-padding;
+    overflow: hidden;
+}
+
+
+header h2{
+    color:variable.$h2-color;
+    float:left;
+
+}
+
+main{
+    background:variable.$main-bgcolor;
+    padding:variable.$header-padding;
+}
+
+
+//include exam.....
+
+main p{
+    @include para-style(16px,justify,red);
+}
+
+#demo p{
+    @include para-style(20px,justify,rgb(0, 0, 0));
+}
+
+
+//how to use @if @else if  @else
+
+@mixin fontSize($value) {
+    @if $value==small{
+        font-size:16px;
+    }@else if $value==medium{
+        font-size:20px;
+    }@else if $value==large{
+        font-size:30px;
+    }@else{
+        font-size:none;
+    };
+    
+}
+
+//how to use @extend & inheritance
+
+
+.btn{
+    color:white;
+    background: black;
+    @include fontSize(large);
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 2px solid red;
+}
+
+.btn:hover{
+    color:yellow;
+    background: rgb(245, 16, 16);
+}
+
+main .jami_btn{
+    @extend .btn;
+}
+
+
+#demo .read_btn{
+    @extend .btn;
+}
+
+//exam of nexting
+
+.menu{
+    ul{ 
+       li{
+       
+      
+        a{
+            background:variable.$main-bgcolor;
+            padding:10px 15px;
+            @include fontSize(medium);
+            display:block;
+            color:white;
+            float:right;
+            border-right:1px solid red;
+            border-radius: 5px;
+        }
+        a:hover{
+                background: white;
+                color :blue;
+        }
+       } 
+    }
+}
+
+
+
+
+//map over item using @each
+
+
+
+ 
+
+@each $color in red, yellow,white, black{
+    .#{$color}-text {color: $color;}
+}
+
+
+
+
+//@for & while loop uses
+
+[class="col-"]{
+    float: left;
+}
+
+.row::after{
+    clear: both;
+    content:" ";
+    display: table;
+
+} 
+
+@while $i<13 {
+    .col-#{$i}{width: 100% /12 *$i;
+    } $i: $i+1
+}
+
+ @for $i from 1 to 13{
+    .col-#{$i}{width: 100% / 12 * $i
+    };
+
+}  

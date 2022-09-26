@@ -1,0 +1,59 @@
+//color variable declarations
+
+ $header-bgcolor:rgb(201, 201, 49);
+ $demo-bgcolor:rgb(49, 201, 95);
+$footer-bgcolor:orange;
+$para-fontsize:15px;
+/* brower reset code */
+*{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+}
+
+.header{
+    background: $header-bgcolor;
+    overflow: hidden;
+}
+
+#demo{
+    background:$demo-bgcolor ;
+}
+
+#demo p{
+    font-size: $para-fontsize;
+}
+
+
+footer{
+    background: $footer-bgcolor;
+}
+
+nav{
+    ul{ list-style-type: none;
+       
+        li{
+           
+           
+            a{
+                float:right;
+                padding:10px 15px;
+                background-color: aqua;
+                color:red;
+                border-radius: 2px ;
+                font-size: $para-fontsize;
+                display:block;
+                text-decoration: none;
+                border-right:1px solid red;
+            }   
+             a:hover{
+                    background: white;
+                    color:black;
+                   
+                   
+
+                }
+            
+        }
+    }
+}
